@@ -12,6 +12,8 @@
 --footer-text:#E7E9FC;
 --icon-color:#8E8F99;
 --color-footer-icon: #31d0aa;
+--main-animation: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+--button-close:#000000;
 }
 
 
@@ -103,21 +105,45 @@ font-style: normal;
 font-size: 16px;
 line-height: 1.5;
 color:var(--main-text-color);
+position: relative;
 }
 .studio:hover,
 .studio:focus{
 color: var(--btn-text-color);
+}
+
+.link.studio.liner::after{
+    position: absolute;
+    bottom: -1px;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: var(--title-btn-active-hover);
+    border-radius: 2px;
 }
 .portfolio{
 font-style: normal;
 font-size: 16px;
 line-height: 1.5;
 color:var(--main-text-color);
+position: relative;
 }
 .portfolio:hover,
 .portfolio:focus{
 color: var(--btn-text-color);
 }
+.link.portfolio.liner::after{
+    position: absolute;
+    bottom: -1px;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: var(--title-btn-active-hover);
+    border-radius: 2px;
+}
+
 
 .contacts{
 font-style: normal;
@@ -202,7 +228,9 @@ box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 border:none;
 border-radius: 4px;
 margin: 0 auto;
+transition:background-color var(--main-animation) ;
 }
+
 .title-button:hover,
 .title-button:focus{
 cursor: pointer;
@@ -331,6 +359,7 @@ width: 100%;
 height: 100%;
 background-color:var(--btn-text-color);
 border-radius: 50%;
+transition:background-color var(--main-animation) ;
 }
 .social-team-image{
 fill: var(--btn-bg-color);
@@ -372,6 +401,7 @@ border-radius: 4px;
 width: 168px;
 height: 88px;
 fill: var(--icon-color);
+transition: fill var(--main-animation), border var(--main-animation);
 }
 .customers-link:is(:hover, :focus) {
 fill: var(--btn-bg-color-active);
@@ -409,6 +439,7 @@ line-height: 1.5;
 color:var(--btn-text-color);
 border: 1px solid var(--footer-text);
 border-radius: 4px;
+transition: color var(--main-animation) background-color var(--main-animation);
 }
 .button-all:hover,
 .button-all:focus{
@@ -430,6 +461,7 @@ line-height: 1.5;
 color:var(--btn-text-color);
 border: 1px solid var(--footer-text);
 border-radius: 4px;
+transition: color var(--main-animation) background-color var(--main-animation);
 }
 .button-web:hover,
 .button-web:focus{
@@ -450,6 +482,7 @@ line-height: 1.5;
 color:var(--btn-text-color);
 border: 1px solid var(--footer-text);
 border-radius: 4px;
+transition: color var(--main-animation) background-color var(--main-animation);
 }
 .button-app:hover,
 .button-app:focus{
@@ -470,6 +503,7 @@ line-height: 1.5;
 color:var(--btn-text-color);
 border: 1px solid var(--footer-text);
 border-radius: 4px;
+transition: color var(--main-animation) background-color var(--main-animation);
 }
 .button-design:hover,
 .button-design:focus{
@@ -490,6 +524,7 @@ line-height: 1.5;
 color:var(--btn-text-color);
 border: 1px solid var(--footer-text);
 border-radius: 4px;
+transition: color var(--main-animation) background-color var(--main-animation);
 }
 .button-marketing:hover,
 .button-marketing:focus{
@@ -537,15 +572,45 @@ font-size: 16px;
 line-height: 1.5;
 color: var(--second-text-color); 
 }
+.overlay{
+position: relative;
+overflow: hidden;
+}
+.thumb-overlay{
+    background-color: var(--btn-bg-color-active);
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translateY(100%);
+    transition: transform var(--main-animation);
+}
+
+.text-overlay{
+    color: var(--footer-text);
+    padding: 40px 32px 164px 32px;
+    font-size: 16px;
+    line-height: 24px;
+}
+.overlay:hover .thumb-overlay{
+    transform: translateY(0);
+    }
 
 .link{
 text-decoration: none;
 display: block;
+transition: color var(--main-animation);
 }
+
 .media:hover{
     box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
 }
+.media{
+    transition: box-shadow var(--main-animation);
+}
+
 
 .footer{
 background-color: var(--second-text-color);
@@ -607,7 +672,60 @@ width: 100%;
 height: 100%;
 background: rgba(255, 255, 255, 0.1);
 border-radius: 50%;
+transition:background-color var(--main-animation);
 }
 .footer-link:is(:hover, :focus) {
 background-color:var(--color-footer-icon);
 }
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+.modal {
+    width: 408px;
+    height: 576px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background:var(--btn-text-color-active);
+  }
+  
+  .close-button {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    background-color: var(--footer-text);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  .close{
+    fill: var(--button-close);
+    transition: fill var(--main-animation);
+  }
+  
+  .close-button:hover,
+  .close-button:active {
+    background: var(--title-btn-active-hover);
+  }
+  
+  .close-button:hover .close,
+  .close-button:active .close {
+    fill: var(--btn-text-color-active);
+  }
+  .is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+  .no-scroll {
+      overflow: hidden;
+  }
