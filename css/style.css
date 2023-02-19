@@ -112,6 +112,7 @@ position: relative;
 color: var(--btn-text-color);
 }
 
+
 .link.studio.liner::after{
     position: absolute;
     bottom: -1px;
@@ -143,7 +144,9 @@ color: var(--btn-text-color);
     background: var(--title-btn-active-hover);
     border-radius: 2px;
 }
-
+.liner{
+    color:var(--title-btn-active-hover)
+    }
 
 .contacts{
 font-style: normal;
@@ -593,9 +596,12 @@ overflow: hidden;
     font-size: 16px;
     line-height: 24px;
 }
-.overlay:hover .thumb-overlay{
+.overlay:hover, :focus .thumb-overlay{
     transform: translateY(0);
     }
+    .overlay:hover .thumb-overlay{
+        transform: translateY(0);
+        }
 
 .link{
 text-decoration: none;
@@ -684,7 +690,10 @@ background-color:var(--color-footer-icon);
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
+    scale: (0.9);
+transition: opacity var(--main-animation), scale var(--main-animation);
 }
+
 .modal {
     width: 408px;
     height: 576px;
@@ -693,6 +702,7 @@ background-color:var(--color-footer-icon);
     left: 50%;
     transform: translate(-50%, -50%);
     background:var(--btn-text-color-active);
+    transition: transform var(--main-animation);
   }
   
   .close-button {
@@ -705,6 +715,7 @@ background-color:var(--color-footer-icon);
     border-radius: 50%;
     border: 1px solid rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    transition: background var(--main-animation);
   }
   .close{
     fill: var(--button-close);
@@ -724,6 +735,7 @@ background-color:var(--color-footer-icon);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+    transition: fill var(--main-animation);
   }
   
   .no-scroll {
