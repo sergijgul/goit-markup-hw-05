@@ -691,7 +691,7 @@ background-color:var(--color-footer-icon);
     height: 100vh;
     background: rgba(0, 0, 0, 0.5);
     scale: (0.9);
-transition: opacity var(--main-animation), scale var(--main-animation);
+transition: opacity var(--main-animation), visibility var(--main-animation);
 }
 
 .modal {
@@ -700,9 +700,10 @@ transition: opacity var(--main-animation), scale var(--main-animation);
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     background:var(--btn-text-color-active);
     transition: transform var(--main-animation);
+    
   }
   
   .close-button {
@@ -735,9 +736,10 @@ transition: opacity var(--main-animation), scale var(--main-animation);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: fill var(--main-animation);
   }
-  
+  .backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(0.9);
+  }
   .no-scroll {
       overflow: hidden;
   }
